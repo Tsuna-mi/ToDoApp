@@ -1,12 +1,18 @@
-h1= title
-p you have #{ tasks.length } tasks created
+extends layout
 
-form(action="/tasks", method="POST")
-	div
-		label Task Name
-		input(type="text",name="name")
-	div
-	input(type="submit",value="Add Task")
+block content
+	h1= title
+	p ( you have #{ tasks.length } tasks created ) 
+		a(href="#") click here
 
-each task, i in tasks
-	p #{ task.id } - #{ task.name }
+	form(action="/tasks", method="POST")
+		div
+			label Task Name
+			input(type="text",name="name")
+		div
+		input(type="submit",value="Add Task")
+
+	ul.tasks
+		each task, i in tasks
+			li #{ task.id } - #{ task.name } 
+				a(href="/tasks?id=#{ task.id }") remove

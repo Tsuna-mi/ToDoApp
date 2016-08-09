@@ -1,6 +1,6 @@
 ## TO-DO App
 
-Create a TO-DO App that allow the user to do the following actions:
+Create a TO-DO App with Express.js that allow the user to do the following actions:
 - Add tasks
 - List tasks
 - Mark tasks as completed

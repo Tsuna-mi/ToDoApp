@@ -4,6 +4,8 @@ var bodyParser = require('body-parser')
 //se usa para cuando enviamos datos por post
 var app = express();
 
+var publicFolder = __dirname + '/public';
+
 // _variable notación de variable privada 
 var _tasks = [
 	{
@@ -31,6 +33,9 @@ app.set('view engine', 'jade');
 //urlencoded método para codif. los datos pasados por url
 app.use(bodyParser.urlencoded({ extended: false }))
 
+console.log (publicFolder);
+app.use( express.static(publicFolder) )
+
 app.get('/tasks', function(req,res) {
 	res.render('tasks', {
 		title: "--- List tasks ---",
@@ -51,6 +56,29 @@ app.post('/tasks', function(req,res) {
 	_tasks.push(newTask);
 	res.redirect('/tasks')
 	//cuando terminamos de hacer cosas, redirijimos de nuevo a la página	
+})
+
+//OTRO EJEMPLO DE DELETE POR PARAMS
+// app.delete('task/:taskId', function(req,res){
+// 	var idToRemove = req.params.taskId;
+// 	//para probar esto lo podemos hacer con postman
+// 	res.send("'/task/:taskId' => id to remove = " + idToRemove);
+// })
+
+app.delete('/tasks', function(req,res) {
+	console.log("tareas antes de borrar:");
+	console.log(_tasks);  //consola del servidor
+	var idToRemove = req.query.id;
+	_tasks = _tasks.filter(function(item,i) {
+		return item.id !== parseInt(idToRemove,10);
+				//tenemos que parsear este valor que nos ha llegado como cadena
+	})
+	// console.log ("task to remove" + idToRemove);
+	console.log("tareas después de borrar:");
+	console.log(_tasks);  
+	//para probar esto lo podemos hacer con postman
+	res.send("'/tasks' => id to remove = " + idToRemove);
+	// res.redirect('/tasks')
 })
 
 app.listen(3000, function() {
