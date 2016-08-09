@@ -1,18 +1,23 @@
 extends layout
 
 block content
-	h1= title
-	p ( you have #{ tasks.length } tasks created ) 
-		a(href="#") click here
-
-	form(action="/tasks", method="POST")
-		div
-			label Task Name
-			input(type="text",name="name")
-		div
-		input(type="submit",value="Add Task")
-
+	div.row
+		form.form(action="/tasks", method="POST")
+			div.form-group
+				div.input-group
+					input.form-control(type="text", name="name", placeholder="Add a new task", required)
+					span.input-group-btn
+						button.btn.btn-primary(type="submit") Add Task
+		
 	ul.tasks
 		each task, i in tasks
 			li #{ task.id } - #{ task.name } 
-				a(href="/tasks?id=#{ task.id }") remove
+				a(href="/tasks?id=#{ task.id }") delete
+			//-montamos una url dinámica para capturar el click del enlace con jquery
+			//-si lo hacemos con button, en html sería algo así:
+			//-<input type="button" onclick="location.href='http://google.com';" value="Go to Google" />  Con la url que nos tengamos que montar
+			p (Created at: )
+
+block footer
+	p 
+		em You have created #{ tasks.length } tasks.

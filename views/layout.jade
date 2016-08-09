@@ -1,8 +1,27 @@
 doctype
 html(lang="en")
 	head
-		title= pageTitle
+		title= "ToDo App"
+		link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+		link(rel='stylesheet', href='/stylesheets/style.css')
 	body
-		block content
+		.container
+			header
+				nav
+					ul
+						li.active
+							a(href="/tasks") List Tasks
+						li
+							a(href="/completed") Completed Tasks
+
+				h1= title
+				p Welcome to the ToDo app by @tsuna-mi. Enjoy!!       
+
+			.main-content
+				block content
+
+			footer
+				block footer
+		
 		script(src="https://code.jquery.com/jquery-2.2.4.js")
-		script(src="/main.js")
+		script(src="/js/main.js")

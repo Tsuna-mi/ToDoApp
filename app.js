@@ -38,7 +38,7 @@ app.use( express.static(publicFolder) )
 
 app.get('/tasks', function(req,res) {
 	res.render('tasks', {
-		title: "--- List tasks ---",
+		title: "ToDo List",
 		tasks: _tasks
 	});
 })
