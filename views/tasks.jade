@@ -1,0 +1,12 @@
+h1= title
+p you have #{ tasks.length } tasks created
+
+form(action="/tasks", method="POST")
+	div
+		label Task Name
+		input(type="text",name="name")
+	div
+	input(type="submit",value="Add Task")
+
+each task, i in tasks
+	p #{ task.id } - #{ task.name }
