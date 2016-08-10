@@ -5,7 +5,7 @@ $(".tasks li a.delete").on("click", function(e) {
 	//console.log(this);
 	var url = $(this).attr("href");
 	//console.log(url);
-	var $self = $(this); // guardamos en self el elemento actual	
+	var $self = $(this); // guardamos en self el elemento actual
 	
 
 	$.ajax({
@@ -27,18 +27,34 @@ $(".tasks li a.delete").on("click", function(e) {
 
 })
 
-$(".tasks li a.add").on("click", function(e) {
+$(".tasks li a.done").on("click", function(e) {
 	e.preventDefault(); 
 	var url = $(this).attr("href");	
 	console.log(this);
 	console.log(url);
-	var $self = $(this); // guardamos en self el elemento actual	
+	var $self = $(this); // guardamos en self el elemento actual
 	
 	$.ajax({
 		url: url,
-		type: 'PUT' //corresponde al método definito en app.js al acceder a la url /tasks
+		type: 'put' //corresponde al método definito en app.js al acceder a la url /tasks
 	})
-	.done(function() {				
-		$self.parent().parent().remove(); //borramos el elemento del DOM				
+	.done(function() {
+		$self.parent().parent().remove(); //borramos el elemento del DOM
 	})
 })
+
+$("#complete-all").on("click", function(e) {
+	e.preventDefault();
+	console.log(this);
+	var url = $(this).attr("href");	
+	console.log(url);
+	var $self = $(this); // guardamos en self el elemento actual
+	
+	$.ajax({
+		url: url,
+		type: 'put' //corresponde al método definito en app.js al acceder a la url /tasks
+	})
+	.done(function() {
+		$self.closest('ul').remove(); //borramos el elemento del DOM
+	})
+});

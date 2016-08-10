@@ -2,25 +2,29 @@ extends layout
 
 block content
 	div.row
-		form.form(action="/tasks", method="POST")
+		form#task.form(action="/tasks", method="POST")
 			div.form-group
 				div.input-group
-					input.form-control(type="text", name="name", placeholder="Add a new task", required)
-					span.input-group-btn
-						button.btn.btn-primary(type="submit") Add Task
+					.row
+						.col-xs-2
+							a#complete-all.alldone.btn.btn-success.pull-left(href="/tasks", title="All tasks are completed") #[i.glyphicon.glyphicon-ok]  all done
+						.col-xs-10
+							input.form-control(type="text", name="name", placeholder="Add a new task", required)
+							span.input-group-btn
+								button.btn.btn-primary(type="submit") Add Task
 		
 	ul.tasks
 		each task, i in tasks
 			li 
 				.task.row
 					.col-xs-2
-						a.add.btn.btn-success.pull-left(href="/tasks?id=#{ task.id }") #[i.glyphicon.glyphicon-ok]  done
+						a.done.btn.btn-success.pull-left(href="/tasks?id=#{ task.id }", title="Task is completed") #[i.glyphicon.glyphicon-ok]  done
 					.col-xs-8
 						p #{ task.id } - #{ task.name }
 						span.dblock 
 							em (Created at: #{moment(task.creationDate).format('YYYY/MM/DD HH:mm')})
 					.col-xs-2
-						a.delete.btn.btn-danger.pull-right(href="/tasks?id=#{ task.id }") #[i.glyphicon.glyphicon-trash]  delete
+						a.delete.btn.btn-danger.pull-right(href="/tasks?id=#{ task.id }", title="Task will be deleted") #[i.glyphicon.glyphicon-trash]  delete
 				
 			//-montamos una url dinámica para capturar el click del enlace con jquery
 			//-si lo hacemos con button, en html sería algo así:

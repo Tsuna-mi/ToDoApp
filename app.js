@@ -88,15 +88,26 @@ app.delete('/tasks', function(req,res) {
 })
 
 app.put('/tasks', function(req, res){
-	var taskId = parseInt(req.query.id);
-	console.log (taskId);
-	_tasks.forEach(function(item){
-		if(item.id === taskId){
+	console.log("query id ");
+	console.log(req.query.id);
+	if (!!req.query.id){
+		var taskId = parseInt(req.query.id);
+		console.log (taskId);
+		_tasks.forEach(function(item){
+			if(item.id === taskId){
+				item.completed = true;
+				item.completedDate = new Date();
+			}
+		});
+	}else{
+		console.log("aqui");
+		_tasks.forEach(function(item){
 			item.completed = true;
-			item.completedDate = new Date();
-		}
-	});
-	res.end();
+			item.completedDate = new Date();		
+		});
+	}
+	
+	res.send();
 });
 
 app.get('/completed', function(req,res) {
