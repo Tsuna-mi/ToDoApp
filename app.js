@@ -87,8 +87,8 @@ app.delete('/tasks', function(req,res) {
 })
 
 app.put('/tasks', function(req, res){
-	console.log("query id ");
-	console.log(req.query.id);
+	//console.log("query id ");
+	//console.log(req.query.id);
 	if (!!req.query.id){
 		var taskId = parseInt(req.query.id);
 		console.log (taskId);
@@ -99,7 +99,6 @@ app.put('/tasks', function(req, res){
 			}
 		});
 	}else{
-		console.log("aqui");
 		_tasks.forEach(function(item){
 			item.completed = true;
 			item.completedDate = new Date();
