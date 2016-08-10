@@ -51,6 +51,20 @@ span.dblock{
 	padding: 6px;
 	font-size: smaller;
 }
+ul.completedList{
+	margin-top: 25px;
+	list-style: none;
+}
+ul.completedList li{
+	text-decoration: line-through;
+}
+ul.completedList li em{
+	font-size: smaller;
+}
+ul.completedList li:before {
+  	content: "\2713";
+  	padding-right: 5px;
+}
 footer{
 	padding-top: 20px;
 }

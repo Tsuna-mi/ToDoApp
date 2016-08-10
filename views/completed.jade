@@ -1,9 +1,10 @@
 extends layout
 block content
-	ul.list-group
+	ul.completedList
 		each task in tasks
 			if task.completed
-				li.list-group-item
+				li #{task.name}  ·  
+					em Completed at: 
 block footer
 	p 
 		em You have #{ tasks.length } tasks completed.

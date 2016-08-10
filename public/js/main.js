@@ -4,7 +4,7 @@ $(".tasks li a.delete").on("click", function(e) {
 	e.preventDefault(); //para evitar que nos recarge la página
 	//console.log(this);
 	var url = $(this).attr("href");
-	console.log(url);
+	//console.log(url);
 	var $self = $(this); // guardamos en self el elemento actual	
 	
 
@@ -25,4 +25,20 @@ $(".tasks li a.delete").on("click", function(e) {
 
 	//console.log("continue doing things....")
 
+})
+
+$(".tasks li a.add").on("click", function(e) {
+	e.preventDefault(); 
+	var url = $(this).attr("href");	
+	console.log(this);
+	console.log(url);
+	var $self = $(this); // guardamos en self el elemento actual	
+	
+	$.ajax({
+		url: url,
+		type: 'PUT' //corresponde al método definito en app.js al acceder a la url /tasks
+	})
+	.done(function() {				
+		$self.parent().parent().remove(); //borramos el elemento del DOM				
+	})
 })

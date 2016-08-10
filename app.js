@@ -86,6 +86,18 @@ app.delete('/tasks', function(req,res) {
 	// res.redirect('/tasks')
 })
 
+app.put('/tasks', function(req, res){
+	var taskId = parseInt(req.query.id);
+	console.log (taskId);
+	_tasks.forEach(function(item){
+		if(item.id === taskId){
+			item.completed = true;
+			item.completedDate = new Date();
+		}
+	});
+	res.end();
+});
+
 app.get('/completed', function(req,res) {
 	var completedTasks = _tasks.filter(function(item){
 		return item.completed === true;
