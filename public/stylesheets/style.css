@@ -13,10 +13,19 @@ nav ul li{
 	display: inline-block;
 	margin-right: 20px;
 }
+nav ul li.inactive a{
+	color: gray;
+}
 a, a:link, a:visited, a:hover, a:active {
     outline: 0;
     text-decoration: none;
     color: white;
+}
+.alert{
+	background-color: purple;
+	color: white;
+	border: none;
+	display:none;
 }
 h1,h2{
 	color:white;

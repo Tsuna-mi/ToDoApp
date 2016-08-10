@@ -42,7 +42,6 @@ app.get('/tasks', function(req,res) {
 		return item.completed === false;
 	})
 	res.render('tasks', {
-		//currentUrl: req.url,
 		title: "ToDo List",
 		tasks: tasksToDo
 	});
@@ -103,7 +102,7 @@ app.put('/tasks', function(req, res){
 		console.log("aqui");
 		_tasks.forEach(function(item){
 			item.completed = true;
-			item.completedDate = new Date();		
+			item.completedDate = new Date();
 		});
 	}
 	
@@ -115,10 +114,8 @@ app.get('/completed', function(req,res) {
 		return item.completed === true;
 	})
 	res.render('completed', {
-		//currentUrl: req.url,
 		title: "Completed Tasks",
-		tasks: completedTasks,
-
+		tasks: completedTasks
 	});
 })
 

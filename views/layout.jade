@@ -8,16 +8,15 @@ html(lang="en")
 		.container
 			header
 				nav
-					ul
-						li.active
+					ul.menu
+						li.tasks
 							a(href="/tasks") List Tasks
-						li
+						li.completed.inactive
 							a(href="/completed") Completed Tasks
-
+				.alert.alert-success Task was removed
+				
 				h1= title
-				p Welcome to the ToDo app by 
-					#[a(href="http://github.com/Tsuna-mi", target="_blank") @tsuna-mi] Enjoy!!
-
+				p Welcome to the ToDo app by #[a(href="http://github.com/Tsuna-mi", target="_blank") @tsuna-mi  ]Enjoy!!
 			.main-content
 				block content
 
