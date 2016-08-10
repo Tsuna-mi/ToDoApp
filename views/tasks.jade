@@ -12,15 +12,15 @@ block content
 	ul.tasks
 		each task, i in tasks
 			li 
-				.row
+				.task.row
 					.col-xs-2
-						a.btn.btn-success.pull-left(href="/tasks?id=#{ task.id }")#[i.glyphicon.glyphicon-ok]  add
+						a.add.btn.btn-success.pull-left(href="/tasks?id=#{ task.id }") #[i.glyphicon.glyphicon-ok]  add
 					.col-xs-8
-						#{ task.id } - #{ task.name }
+						p #{ task.id } - #{ task.name }
 						span.dblock 
 							em (Created at: )
 					.col-xs-2
-						a.btn.btn-danger.pull-right(href="/tasks?id=#{ task.id }")#[i.glyphicon.glyphicon-trash]  delete
+						a.delete.btn.btn-danger.pull-right(href="/tasks?id=#{ task.id }") #[i.glyphicon.glyphicon-trash]  delete
 				
 			//-montamos una url dinámica para capturar el click del enlace con jquery
 			//-si lo hacemos con button, en html sería algo así:

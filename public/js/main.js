@@ -1,11 +1,12 @@
 //console.log ("hola")
 //$(h1).css(color,red);
-$(".tasks li a").on("click", function(e) {
+$(".tasks li a.delete").on("click", function(e) {
 	e.preventDefault(); //para evitar que nos recarge la página
 	//console.log(this);
 	var url = $(this).attr("href");
 	console.log(url);
-	var $self = $(this); // guardamos en self el elemento actual
+	var $self = $(this); // guardamos en self el elemento actual	
+	
 
 	$.ajax({
 		url: url,
@@ -14,7 +15,7 @@ $(".tasks li a").on("click", function(e) {
 	.done(function(msg) {
 		console.log(msg)
 		//console.log("the task has been removed!!");
-		$self.parent().remove(); //borramos el elemento del DOM
+		$self.parent().parent().remove(); //borramos el elemento del DOM
 		//window.location = '/tasks';
 		//en este caso no redirijimos desde el método delete del servidor,
 		//como hemos hecho la operación con AJAX, porque no es un método por

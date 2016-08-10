@@ -1,15 +1,11 @@
 extends layout
 block content
-	
-	form(action="/tasks", method="POST")
-		div
-			label Task Name: 
-			input(type="text",name="name",placeholder="Add a new task")
-		div
-			input(type="submit",value="Add Task")
-
-	each task, i in tasks
-		p #{ task.id } - #{ task.name }
-		p (Created at: )
+	ul.list-group
+		each task in tasks
+			if task.completed
+				li.list-group-item
 block footer
-    p you have #{ tasks.length } tasks completed
+	p 
+		em You have #{ tasks.length } tasks completed.
+
+

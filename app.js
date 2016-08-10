@@ -9,22 +9,22 @@ var publicFolder = __dirname + '/public';
 // _variable notación de variable privada 
 var _tasks = [
 	{
-		id: 1,
+		id: 'a',
 		name: "my first task",
 		completed: false
 	},
 	{
-		id: 2,
+		id: 'b',
 		name: "another task",
 		completed: false
 	},
 	{
-		id: 3,
+		id: 'c',
 		name: "and another task one more time",
 		completed: false
 	}
 ];
-var counter = 100;
+var counter = 0;
 
 app.set('views', __dirname + '/views');	//para jade
 app.set('view engine', 'jade');
@@ -33,13 +33,17 @@ app.set('view engine', 'jade');
 //urlencoded método para codif. los datos pasados por url
 app.use(bodyParser.urlencoded({ extended: false }))
 
-console.log (publicFolder);
+//console.log (publicFolder);
 app.use( express.static(publicFolder) )
 
 app.get('/tasks', function(req,res) {
+	var tasksToDo = _tasks.filter(function(item){
+		return item.completed === false;
+	})
 	res.render('tasks', {
+		//currentUrl: req.url,
 		title: "ToDo List",
-		tasks: _tasks
+		tasks: tasksToDo
 	});
 })
 
@@ -51,6 +55,7 @@ app.post('/tasks', function(req,res) {
 	var newTask = {
 		id : ++counter,
 		name: nameTask,
+		creationDate: new Date(),
 		completed: false
 	}
 	_tasks.push(newTask);
@@ -66,19 +71,31 @@ app.post('/tasks', function(req,res) {
 // })
 
 app.delete('/tasks', function(req,res) {
-	console.log("tareas antes de borrar:");
-	console.log(_tasks);  //consola del servidor
+	//console.log("tareas antes de borrar:");
+	//console.log(_tasks);  //consola del servidor
 	var idToRemove = req.query.id;
 	_tasks = _tasks.filter(function(item,i) {
 		return item.id !== parseInt(idToRemove,10);
 				//tenemos que parsear este valor que nos ha llegado como cadena
 	})
 	// console.log ("task to remove" + idToRemove);
-	console.log("tareas después de borrar:");
-	console.log(_tasks);  
+	//console.log("tareas después de borrar:");
+	//console.log(_tasks);  
 	//para probar esto lo podemos hacer con postman
 	res.send("'/tasks' => id to remove = " + idToRemove);
 	// res.redirect('/tasks')
+})
+
+app.get('/completed', function(req,res) {
+	var completedTasks = _tasks.filter(function(item){
+		return item.completed === true;
+	})
+	res.render('completed', {
+		//currentUrl: req.url,
+		title: "Completed Tasks",
+		tasks: completedTasks,
+
+	});
 })
 
 app.listen(3000, function() {
