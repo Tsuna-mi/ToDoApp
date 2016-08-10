@@ -61,7 +61,7 @@ ul.tasks li p{
 span.dblock{
 	display: block;
 	font-size: smaller;	
-	margin-top: -10px;
+	margin-top: -20px;
 }
 .tasks .btn, .alldone{
 	border-radius: 10px;

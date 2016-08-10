@@ -8,23 +8,23 @@ app.locals.moment = require('moment');
 var publicFolder = __dirname + '/public';
 
 // _variable notación de variable privada 
-var _tasks = [
-	{
-		id: 'a',
-		name: "my first task",
-		completed: false
-	},
-	{
-		id: 'b',
-		name: "another task",
-		completed: false
-	},
-	{
-		id: 'c',
-		name: "and another task one more time",
-		completed: false
-	}
-];
+var _tasks = [];
+// 	{
+// 		id: 'a',
+// 		name: "my first task",
+// 		completed: false
+// 	},
+// 	{
+// 		id: 'b',
+// 		name: "another task",
+// 		completed: false
+// 	},
+// 	{
+// 		id: 'c',
+// 		name: "and another task one more time",
+// 		completed: false
+// 	}
+// ];
 var counter = 0;
 
 app.set('views', __dirname + '/views');	//para jade

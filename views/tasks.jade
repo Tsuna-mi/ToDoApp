@@ -20,9 +20,10 @@ block content
 					.col-xs-2
 						a.done.btn.btn-success.pull-left(href="/tasks?id=#{ task.id }", title="Task is completed") #[i.glyphicon.glyphicon-ok]  done
 					.col-xs-8
-						p #{ task.id } - #{ task.name }
-						span.dblock 
-							em (Created at: #{moment(task.creationDate).format('YYYY/MM/DD HH:mm')})
+						ol
+							li #{ task.name }
+							span.dblock 
+								em (Created at: #{moment(task.creationDate).format('YYYY/MM/DD HH:mm')})
 					.col-xs-2
 						a.delete.btn.btn-danger.pull-right(href="/tasks?id=#{ task.id }", title="Task will be deleted") #[i.glyphicon.glyphicon-trash]  delete
 				

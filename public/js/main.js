@@ -60,6 +60,7 @@ $(".tasks li a.done").on("click", function(e) {
 	})
 	.done(function() {
 		$self.parent().parent().remove(); //borramos el elemento del DOM
+		window.location = '/tasks';
 	})
 })
 
@@ -77,6 +78,7 @@ $("#complete-all").on("click", function(e) {
 	})
 	.done(function() {
 		$self.closest('ul').remove(); //borramos el elemento del DOM
+		window.location = '/tasks';
 	})
 });
 
