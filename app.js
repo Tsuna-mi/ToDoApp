@@ -3,6 +3,7 @@ var jade = require('jade')
 var bodyParser = require('body-parser')
 //se usa para cuando enviamos datos por post
 var app = express();
+app.locals.moment = require('moment');
 
 var publicFolder = __dirname + '/public';
 

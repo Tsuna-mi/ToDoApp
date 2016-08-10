@@ -4,7 +4,7 @@ block content
 		each task in tasks
 			if task.completed
 				li #{task.name}  ·  
-					em Completed at: 
+					em Completed at: #{moment(task.completedDate).format('YYYY/MM/DD HH:mm')}
 block footer
 	p 
 		em You have #{ tasks.length } tasks completed.

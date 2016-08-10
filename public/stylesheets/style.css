@@ -44,7 +44,8 @@ ul.tasks li p{
 }
 span.dblock{
 	display: block;
-	font-size: small;
+	font-size: smaller;	
+	margin-top: -10px;
 }
 .tasks .btn{
 	border-radius: 10px;
